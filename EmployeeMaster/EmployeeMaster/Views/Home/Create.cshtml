@@ -1,0 +1,204 @@
+﻿@model EmployeeMaster.Models.CreateViewModel
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+@{
+    ViewBag.Title = "Create";
+}
+<script type="text/javascript">
+    function validation() {
+        var validated = true;
+        if (!employeeid(employeeid)) validated = false;
+        if (!employeeno()) validated = false;
+        if (!employeename()) validated = false;
+        if (!email()) validated = false;
+        if (!mobile()) validated = false;
+        if (!address()) validated = false;
+        if (!designationid()) validated = false;
+        return validated;
+    }
+    function validation() {
+        var empid = document.getElementById('EmployeeId');
+        if (empid.value == 0 || empid.value == null) {
+            document.getElementById('employeeid').innerText = ('Please Enter The Employee Id !!!');
+            document.getElementById('employeeid').style.color = 'red';
+            empid.focus();
+            return false;
+        }
+        else {
+            document.getElementById('employeeid').innerText = ('');
+            return true;
+        }
+        
+    }
+
+    //function employeeno(input) {
+    //    //var empno = document.getElementById('EmployeeNo');
+    //    if (input.value == 0 || input.value == null) {
+    //        document.getElementById('employeeno').innerText = ('Please Enter The Employee No !!!');
+    //        document.getElementById('employeeno').style.color = 'red';
+    //        empno.focus();
+    //        return false;
+    //    }
+    //    else {
+    //        document.getElementById('employeeno').innerText = ('');
+    //        return true;
+    //    }
+
+    //}
+
+    //function validation() {
+    //    var empname = document.getElementById('EmployeeName');
+    //    if (empname.value == 0 || empname.value == null) {
+    //        document.getElementById('employeename').innerText = ('Please Enter The Employee Name !!!');
+    //        document.getElementById('employeename').style.color = 'red';
+    //        empname.focus();
+    //        return false;
+    //    }
+    //    else {
+    //        document.getElementById('employeename').innerText = ('');
+    //        return true;
+    //    }
+
+    //}
+
+    //function validation() {
+    //    var empemail = document.getElementById('Email');
+    //    if (empemail.value == 0 || empemail.value == null) {
+    //        document.getElementById('email').innerText = ('Please Enter The Valid Email !!!');
+    //        document.getElementById('email').style.color = 'red';
+    //        empemail.focus();
+    //        return false;
+    //    }
+    //    else {
+    //        document.getElementById('email').innerText = ('');
+    //        return true;
+    //    }
+
+    //}
+
+    //function validation() {
+    //    var empmobile = document.getElementById('Mobile');
+    //    if (empmobile.value == 0 || empmobile.value == null) {
+    //        document.getElementById('mobile').innerText = ('Please Enter The Mobile Number !!!');
+    //        document.getElementById('mobile').style.color = 'red';
+    //        empmobile.focus();
+    //        return false;
+    //    }
+    //    else {
+    //        document.getElementById('mobile').innerText = ('');
+    //        return true;
+    //    }
+
+    //}
+
+    //function validation() {
+    //    var empaddress = document.getElementById('Address');
+    //    if (empaddress.value == 0 || empaddress.value == null) {
+    //        document.getElementById('address').innerText = ('Please Enter The Permanent Address !!!');
+    //        document.getElementById('address').style.color = 'red';
+    //        empaddress.focus();
+    //        return false;
+    //    }
+    //    else {
+    //        document.getElementById('address').innerText = ('');
+    //        return true;
+    //    }
+
+    //}
+
+    //function validation() {
+    //    var dsg = document.getElementById('DesignationId');
+    //    if (dsg.value == 0 || dsg.value == null) {
+    //        document.getElementById('designationid').innerText = ('Please Enter The Designation Id !!!');
+    //        document.getElementById('designationid').style.color = 'red';
+    //        dsg.focus();
+    //        return false;
+    //    }
+    //    else {
+    //        document.getElementById('designationid').innerText = ('');
+    //        return true;
+    //    }
+
+    }
+</script>
+
+@using (Html.BeginForm())
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmployeeId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EmployeeId, new { htmlAttributes = new { @class = "form-control" } })
+                <span id="employeeid" class="text-danger font-weight-bold"></span>
+                @Html.ValidationMessageFor(model => model.EmployeeId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmployeeNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EmployeeNo, new { htmlAttributes = new { @class = "form-control"} })
+                <span id="employeeno" class="text-danger font-weight-bold"></span>
+                @Html.ValidationMessageFor(model => model.EmployeeNo)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmployeeName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EmployeeName, new { htmlAttributes = new { @class = "form-control" } })
+                <span id="employeename" class="text-danger font-weight-bold"></span>
+                @Html.ValidationMessageFor(model => model.EmployeeName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                <span id="email" class="text-danger font-weight-bold"></span>
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Mobile, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control", } })
+                <span id="mobile" class="text-danger font-weight-bold"></span>
+                @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                <span id="address" class="text-danger font-weight-bold"></span>
+                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DesignationId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DesignationId, new { htmlAttributes = new { @class = "form-control"} })
+                <span id="designationid" class="text-danger font-weight-bold"></span>
+                @Html.ValidationMessageFor(model => model.DesignationId, "", new { @class = "text-danger" })
+            </div>
+            <br />
+            <div>
+                <input type="submit" value="SUBMIT" class="btn btn-outline-success" onclick="validation();" />
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-outline-info", })
+            </div>
+
+        </div>
+    </div>
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

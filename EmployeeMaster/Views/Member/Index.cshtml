@@ -1,0 +1,81 @@
+﻿@model List<EmployeeMaster.Models.MultiData>
+@{
+    ViewBag.Title = "Index";
+}
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <link href="~/lib/simplePagination.js/simplePagination.css" rel="stylesheet" />
+    <script src="~/lib/simplePagination.js/jquery.simplePagination.js"></script>
+    <script src="~/scripts/site.js"></script>
+</head>
+<body>
+    <div class="d-flex justify-content-center min-vh-100">
+        <form action="" method="post" class=" border-info rounded-3 alert alert-success w-100">
+            <h1 class=" alert alert-warning text-center border-0">Member Information</h1>
+            <a href="/Home/Create" class="btn btn-outline-success mt-3" style="margin-bottom:2%">Create</a>
+
+            <table class="table table-striped">
+                <tr>
+                    <th>Member Id</th>
+                    <th>Name</th>
+                    <th>ContactNo</th>
+                    <th>JoiningDate</th>
+                    <th>InvestmentDate</th>
+                    <th>Tenure</th>
+                    <th>Photo</th>
+                    <th>IDProof</th>
+                    <th>ParentId</th>
+                    <th>FistName</th>
+                    <th>MiddleName</th>
+                    <th>LastName</th>
+                    <th>AadharNo</th>
+                    <th>PanNo</th>
+                    <th>AnnualIncome</th>
+                    <th>Actions</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.registration.MemberId</td>
+                        <td>@item.registration.Name</td>
+                        <td>@item.registration.ContactNo</td>
+                        <td>@item.registration.JoiningDate</td>
+                        <td>@item.registration.InvestmentDate</td>
+                        <td>@item.registration.Tenure</td>
+                        <td>@item.registration.Photo </td>
+                        <td>@item.registration.IDProof</td>
+                        <td>@item.registration.ParentId</td>
+                        <td>@item.registration.</td>
+                        <td>@item.registration.IDProof</td>
+                        <td>@item.registration.IDProof</td>
+                        <td>@item.registration.IDProof</td>
+                        <td>@item.registration.IDProof</td>
+                        <td>@item.registration.IDProof</td>
+                        <td>@item.registration.IDProof</td>
+                        <td>@item.registration.IDProof</td>
+                        <td>@item.registration.IDProof</td>
+                        <td>
+                            <a class="btn btn-outline-info" href="/Home/Details/@item.employeeMasters.EmployeeId">Details</a>
+                            <a class="btn btn-outline-warning" href="/Home/Edit/@item.employeeMasters.EmployeeId">Edit</a>
+                            <a class="btn btn-outline-danger" href="/Home/Delete/@item.employeeMasters.EmployeeId">Delete</a>
+                        </td>
+                    </tr>
+
+                }
+            </table>
+        </form>
+    </div>
+</body>
+</html>
+

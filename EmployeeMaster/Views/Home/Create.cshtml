@@ -1,0 +1,140 @@
+﻿@model EmployeeMaster.Models.CreateViewModel
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+@{
+    ViewBag.Title = "Create";
+}
+<script type="text/javascript">
+    function formValidation() {
+        var empID = document.getElementById('EmployeeId').value;
+        if (empID == "" || empID == null || empID==0) {
+            document.getElementById('employeeid').innerText = 'Please Enter The Employee Id !!!';
+            document.getElementById('employeeid').style.color = 'red';
+            return false;
+        }
+
+        var empNO = document.getElementById('EmployeeNo').value;
+        if (empNO == "" || empNO == null) {
+            document.getElementById('employeeno').innerText = 'Please Enter The Employee Number !!!';
+            document.getElementById('employeeno').style.color = 'red';
+            return false;
+        }
+
+        var empName = document.getElementById('EmployeeName').value;
+        if (empName == "" || empName == null) {
+            document.getElementById('employeename').innerText = 'Please Enter The Employee Number !!!';
+            document.getElementById('employeename').style.color = 'red';
+            return false;
+        }
+
+        var Empemail = document.getElementById('Email').value;
+        var regExpr = /^([\w-\.]+)@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+        if (Empemail == "" || Empemail == null || Empemail == undefined) {
+            document.getElementById('email').innerText = 'Please Enter Input !!!';
+            document.getElementById('email').style.color = 'red';
+            return false;
+        }
+        else if ((Empemail != "" || Empemail != null || Empemail != undefined) && !regExpr.test(Empemail)) {
+            document.getElementById('email').innerText = 'Please enter valid email !!!';
+            return false;
+        }
+
+        var empmobile = document.getElementById('Mobile').value;
+        if (empmobile == "" || empmobile == null) {
+            document.getElementById('mobile').innerText = 'Please Enter The Mobile Number !!!';
+            document.getElementById('mobile').style.color = 'red';
+            return false;
+        }
+
+        var empAddress = document.getElementById('Address').value;
+        if (empAddress == "" || empAddress == null) {
+            document.getElementById('address').innerText = 'Please Enter The Permanent Address !!!';
+            document.getElementById('address').style.color = 'red';
+            return false;
+        }
+
+        var dsg = document.getElementById('DesignationId').value;
+        if (dsg == "" || dsg == null) {
+            document.getElementById('designationid').innerText = 'Please Enter The Designation Id !!!';
+            document.getElementById('designationid').style.color = 'red';
+            return false;
+        }
+    }
+    
+   
+    
+</script>
+
+@using (Html.BeginForm())
+{
+    HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmployeeId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EmployeeId, new { htmlAttributes = new { @class = "form-control" } })
+                <span id="employeeid" class="text-danger font-weight-bold"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmployeeNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EmployeeNo, new { htmlAttributes = new { @class = "form-control"} })
+                <span id="employeeno" class="text-danger font-weight-bold"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmployeeName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EmployeeName, new { htmlAttributes = new { @class = "form-control" } })
+                <span id="employeename" class="text-danger font-weight-bold"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                <span id="email" class="text-danger font-weight-bold"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Mobile, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control", } })
+                <span id="mobile" class="text-danger font-weight-bold"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                <span id="address" class="text-danger font-weight-bold"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DesignationId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DesignationId, new { htmlAttributes = new { @class = "form-control"} })
+                <span id="designationid" class="text-danger font-weight-bold"></span>
+            </div>
+            <br />
+            <div>
+                <input type="submit" value="SUBMIT" class="btn btn-outline-success" onclick="return formValidation()"/>
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-outline-info", })
+            </div>
+
+        </div>
+    </div>
+}
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
